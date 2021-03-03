@@ -12,7 +12,11 @@ from selenium import webdriver
 
 class crawlCar(object):
     def __init__(self):
-        self.driver = webdriver.PhantomJS(executable_path='phantomjs.exe')
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.add_argument("--disable-infobars")
+        browser = webdriver.Chrome(chrome_options=chrome_options)
+        #self.driver = webdriver.PhantomJS(executable_path='phantomjs.exe')
+        self.driver=browser
         self.source_page = 'https://car.autohome.com.cn'
         self.source_folder = './download'
         self.start()
